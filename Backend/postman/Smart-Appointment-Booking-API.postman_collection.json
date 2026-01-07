@@ -1,0 +1,392 @@
+{
+  "info": {
+    "_postman_id": "appointment-booking-api",
+    "name": "Smart Appointment Booking API",
+    "description": "Production-grade appointment booking system with concurrent booking prevention, timezone support, and comprehensive security features.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"SecurePass123\",\n  \"role\": \"USER\",\n  \"timezone\": \"America/New_York\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"SecurePass123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Providers",
+      "item": [
+        {
+          "name": "List All Providers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/providers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "providers"]
+            }
+          }
+        },
+        {
+          "name": "Get Provider by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/providers/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "providers", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PROVIDER_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Providers with Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/providers/withslots",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "providers", "withslots"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slots",
+      "item": [
+        {
+          "name": "Create Slots (Provider)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTime\": \"2026-01-15T09:00:00Z\",\n  \"endTime\": \"2026-01-15T17:00:00Z\",\n  \"duration\": 30,\n  \"timezone\": \"America/New_York\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/slots",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots"]
+            }
+          }
+        },
+        {
+          "name": "Get Available Slots for Provider",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/slots/provider/:providerId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots", "provider", ":providerId"],
+              "variable": [
+                {
+                  "key": "providerId",
+                  "value": "PROVIDER_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get My Slots (Provider)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/slots/my",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots", "my"]
+            }
+          }
+        },
+        {
+          "name": "Block/Unblock Slot (Provider)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"blockReason\": \"Personal leave\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/slots/:id/toggle",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots", ":id", "toggle"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SLOT_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Slot (Provider)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTime\": \"2026-01-15T10:00:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/slots/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SLOT_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Slot (Provider)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/slots/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "slots", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "SLOT_ID"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Book Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slotId\": \"SLOT_ID\",\n  \"timezone\": \"America/New_York\",\n  \"notes\": \"First time consultation\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancellationReason\": \"Personal reasons\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "APPOINTMENT_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Reschedule Appointment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newSlotId\": \"NEW_SLOT_ID\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments/:id/reschedule",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments", ":id", "reschedule"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "APPOINTMENT_ID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Appointment History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/appointments/history",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "appointments", "history"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
