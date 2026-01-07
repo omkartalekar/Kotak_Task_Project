@@ -1,0 +1,229 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.select, .input {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.select:disabled, .input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.select:focus, .input:focus {
+  outline: 2px solid #3b82f6;
+}
+
+.bookBtn {
+  background-color: #16a34a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.bookBtn:hover {
+  background-color: #15803d;
+}
+
+.bookBtn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.loading {
+  color: #6b7280;
+}
+
+.noData {
+  color: #6b7280;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  background-color: #f3f4f6;
+}
+
+.tableHead th {
+  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  text-align: start;
+}
+
+.tableHead th.centerAlign {
+  text-align: center;
+}
+
+.tableBody tr:hover {
+  background-color: #f9fafb;
+}
+
+.tableBody td {
+  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+}
+
+.tableBody td.centerAlign {
+  text-align: center;
+}
+
+.tableBody td.actionCell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.statusCell {
+  font-weight: 500;
+}
+
+.dateText {
+  font-size: 14px;
+}
+
+.rescheduleBtn {
+  background-color: #2563eb;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.rescheduleBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.cancelBtn {
+  background-color: #dc2626;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancelBtn:hover {
+  background-color: #b91c1c;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.modalSelect {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.modalCancelBtn {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.modalCancelBtn:hover {
+  background-color: #f3f4f6;
+}
+
+.modalConfirmBtn {
+  background-color: #16a34a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.modalConfirmBtn:hover {
+  background-color: #15803d;
+}
