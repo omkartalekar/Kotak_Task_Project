@@ -1,0 +1,146 @@
+.pageTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.formContainer {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.input, .select {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.input:focus, .select:focus {
+  outline: 2px solid #3b82f6;
+}
+
+.submitBtn {
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.error {
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.loading {
+  color: #6b7280;
+}
+
+.tableContainer {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  background-color: #f3f4f6;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.tableHead th {
+  padding: 12px 16px;
+}
+
+.tableBody tr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.tableBody tr:hover {
+  background-color: #f9fafb;
+}
+
+.tableBody td {
+  padding: 12px 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn {
+  color: #2563eb;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  text-decoration: underline;
+}
+
+.deleteBtn {
+  color: #dc2626;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  text-decoration: underline;
+}
+
+.emptyState {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.dateText {
+  font-size: 14px;
+  color: #6b7280;
+}
